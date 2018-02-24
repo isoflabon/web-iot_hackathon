@@ -18,20 +18,22 @@ class SoundsController < ApplicationController
     sounds = sounds.sort_by{ |sound| sound.use_count}
     # soundsのデータの参照回数、効果を示す回数によって分岐させる
     # 参照回数が0のものから。なければ効果が高いものから。
-    if sounds.first.use_count == nil
-      sound = sounds.first
-      @sound_name = sound.name
-      $now_sound = @sound_name
-      # soundが nil だったら1を代入
-      sound.use_count = sound.use_count ? sound.use_count + 1 : 1
-      sound.save
-    else
-      sounds = sounds.sort_by{ |sound| sound.effect_count}
-      sound = sounds.first
-      @sound_name = sound.name
-      $now_sound = @sound_name
-      sound.use_count = sound.use_count ? sound.use_count + 1 : 1
-      sound.save
+    if sounds.first != nil
+      if sounds.first.use_count == nil
+        sound = sounds.first
+        @sound_name = sound.name
+        $now_sound = @sound_name
+        # soundが nil だったら1を代入
+        sound.use_count = sound.use_count ? sound.use_count + 1 : 1
+        sound.save
+      else
+        sounds = sounds.sort_by{ |sound| sound.effect_count}
+        sound = sounds.first
+        @sound_name = sound.name
+        $now_sound = @sound_name
+        sound.use_count = sound.use_count ? sound.use_count + 1 : 1
+        sound.save
+      end
     end
   end
 
