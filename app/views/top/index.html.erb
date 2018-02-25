@@ -1,6 +1,6 @@
 <h1>音源の効果一覧表</h1>
+<% @sounds.each do |sound| %>
 <div class="box">
-  <% @sounds.each do |sound| %>
   <table>
     <tr>
       <td>曲名:</td> <td><%= sound.name %></td>
@@ -12,5 +12,6 @@
       <td>流された回数:</td> <td><%= sound.use_count %></td>
     </tr>
   </table>
-  <% end %>
 </div>
+
+<% end %>
