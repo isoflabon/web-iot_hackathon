@@ -34,6 +34,7 @@ class SoundsController < ApplicationController
         sound.use_count = sound.use_count ? sound.use_count + 1 : 1
         sound.save
       end
+      redirect_to "http://def017ef.ngrok.io/#{@sound_name}"
     end
   end
 

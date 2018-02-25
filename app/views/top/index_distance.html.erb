@@ -1,0 +1,10 @@
+<h1>過去の襲撃履歴</h1>
+過去センサーに近づいた履歴です。
+<%= link_to "音源の効果一覧", root_path %>
+<br>最新順に並んでいます。
+<% @distances.each do |distance| %>
+<div class="box">
+  襲撃。<%= distance.created_at %><br>
+  対象との距離は<%= distance.distance %>cmです。<br>
+</div>
+<% end %>
